@@ -1,237 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Aditya Pratap Singh | AI & ML Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate Fun Game Zone</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
+<!-- Confetti Library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
 
-<!-- ================= PRELOADER ================= -->
-<div id="preloader">
-  <div class="loader"></div>
-</div>
+<!-- ============ EMOJI BACKGROUND LAYER ============ -->
+<div class="emoji-background" id="emojiBackground"></div>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
-  <div class="container">
-    <a class="navbar-brand fw-bold text-warning" href="#">Aditya Pratap Singh</a>
+<!-- ============ DARK MODE TOGGLE ============ -->
+<button id="themeToggle" class="theme-toggle">🌙</button>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-
-      <button id="theme-toggle" class="btn btn-warning btn-sm ms-3">🌙</button>
+<!-- ================= HERO SECTION ================= -->
+<header class="hero">
+    <div class="hero-content">
+        <h1>🎮 Ultimate Fun Game Zone 🎮</h1>
+        <p>Play Quiz | Play Emoji Catch | Enjoy Music & Animation</p>
+        <button id="startGameBtn" class="primary-btn">Start Playing 🚀</button>
     </div>
-  </div>
-</nav>
+</header>
 
-<!-- ================= HERO ================= -->
-<section id="home" class="hero-section d-flex align-items-center">
-  <div class="container text-center text-white">
-    <h1 class="display-4 fw-bold">
-      Hi, I'm <span class="text-warning">Aditya Pratap Singh</span>
-    </h1>
-    <p class="lead">
-      AI & Machine Learning Enthusiast | Web Developer
-    </p>
-    <p>
-      Building intelligent systems and modern web applications to solve real-world problems.
-    </p>
-    <a href="#projects" class="btn btn-warning mt-3 me-2">View My Work</a>
-    <a href="#contact" class="btn btn-outline-light mt-3">Contact Me</a>
-  </div>
+<!-- ================= MAIN ================= -->
+<main>
+
+<!-- ================= INTRO + USER INFO ================= -->
+<section class="user-info-section" id="userInfoSection">
+    <h2>Enter Your Details</h2>
+    <form id="userForm">
+        <input type="text" id="playerName" placeholder="Enter Your Name" required>
+        <input type="email" id="playerEmail" placeholder="Enter Your Email( Optional)">
+        <button type="submit" class="primary-btn">Continue ➡</button>
+    </form>
 </section>
 
-<!-- ================= ABOUT ================= -->
-<section id="about" class="section py-5">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-5 text-center mb-4">
-        <img src="images/aditya-profile.jpg"
-             class="img-fluid rounded-circle shadow"
-             alt="Aditya Profile">
-      </div>
-
-      <div class="col-md-7">
-        <h2 class="section-title">About Me</h2>
-        <p class="mt-3">
-          I am currently pursuing B.Tech in Computer Science Engineering at 
-          <strong>KCC College, Noida</strong>.
-        </p>
-        <p>
-          Passionate about Artificial Intelligence, Machine Learning,
-          and Full Stack Web Development. I focus on building real-world
-          solutions and continuously improving my technical expertise.
-        </p>
-      </div>
+<!-- ================= MODE SELECTION ================= -->
+<section class="mode-selection" id="modeSection" style="display:none;">
+    <h2>Select Game Mode</h2>
+    <div class="mode-buttons">
+        <button id="quizModeBtn" class="mode-btn">🧠 Quiz Game</button>
+        <button id="kidsModeBtn" class="mode-btn">🎯 Kids Emoji Game</button>
     </div>
-  </div>
 </section>
 
-<!-- ================= SKILLS ================= -->
-<section id="skills" class="section bg-light py-5">
-  <div class="container text-center">
-    <h2 class="section-title">Technical Skills</h2>
-
-    <div class="row mt-4">
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-3 shadow">
-          <i class="fab fa-python fa-2x text-primary"></i>
-          <p>Python</p>
-          <div class="skill-bar">
-            <div class="skill-bar-fill" data-skill="85%"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-3 shadow">
-          <i class="fab fa-html5 fa-2x text-danger"></i>
-          <p>HTML</p>
-          <div class="skill-bar">
-            <div class="skill-bar-fill" data-skill="95%"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-3 shadow">
-          <i class="fab fa-css3-alt fa-2x text-info"></i>
-          <p>CSS</p>
-          <div class="skill-bar">
-            <div class="skill-bar-fill" data-skill="90%"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-3 shadow">
-          <i class="fab fa-js fa-2x text-warning"></i>
-          <p>JavaScript</p>
-          <div class="skill-bar">
-            <div class="skill-bar-fill" data-skill="80%"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-3 shadow">
-          <i class="fab fa-react fa-2x text-primary"></i>
-          <p>React</p>
-          <div class="skill-bar">
-            <div class="skill-bar-fill" data-skill="65%"></div>
-          </div>
-        </div>
-      </div>
+<!-- ================= QUIZ TYPE ================= -->
+<section class="quiz-type-selection" id="quizTypeSection" style="display:none;">
+    <h2>Select Quiz Type</h2>
+    <div class="quiz-type-buttons">
+        <button id="singleChoiceBtn" class="mode-btn">Single Choice</button>
+        <button id="multiChoiceBtn" class="mode-btn">Multiple Choice</button>
     </div>
-  </div>
 </section>
 
-<!-- ================= PROJECTS ================= -->
-<section id="projects" class="section py-5">
-  <div class="container text-center">
-    <h2 class="section-title">Projects</h2>
+<!-- ================= QUIZ SECTION ================= -->
+<section class="quiz-section" id="quizSection" style="display:none;">
 
-    <div class="row mt-4">
-      <div class="col-md-4 mb-4">
-        <div class="card shadow project-card">
-          <img src="images/tutormitra.png" class="card-img-top" alt="TutorMitra">
-          <div class="card-body">
-            <h5 class="card-title">TutorMitra</h5>
-            <p class="card-text">
-              EdTech platform featuring authentication, course listing,
-              and payment integration.
-            </p>
-            <a href="https://github.com/Adityahub404singh" target="_blank" class="btn btn-dark btn-sm">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="card shadow project-card">
-          <img src="images/fire-robot.jpg" class="card-img-top" alt="Fire Robot">
-          <div class="card-body">
-            <h5 class="card-title">Automatic Fire Fighting Robot</h5>
-            <p class="card-text">
-              Arduino-based autonomous robot capable of detecting and extinguishing fire.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="card shadow project-card">
-          <img src="images/ai-project.jpg" class="card-img-top" alt="AI Project">
-          <div class="card-body">
-            <h5 class="card-title">AI/ML Project</h5>
-            <p class="card-text">
-              Machine learning model development for real-world data analysis.
-            </p>
-          </div>
-        </div>
-      </div>
+    <div class="quiz-header">
+        <div>Score: <span id="score">0</span></div>
+        <div>Time: <span id="time">15</span>s</div>
     </div>
-  </div>
+
+    <div class="question-info">
+        Question <span id="current-question">1</span> /
+        <span id="total-question">10</span>
+    </div>
+
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+
+    <div class="quiz-controls">
+        <button id="submitAnswerBtn" class="primary-btn">Submit</button>
+        <button id="nextBtn" class="secondary-btn">Next ➡</button>
+    </div>
+
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="section bg-dark text-white py-5">
-  <div class="container text-center">
-    <h2>Contact Me</h2>
-    <p>Email: singhaditya4560@gmail.com</p>
-    <p>
-      <i class="fab fa-github"></i>
-      <a href="https://github.com/Adityahub404singh" target="_blank" class="text-warning">
-        github.com/Adityahub404singh
-      </a>
-    </p>
-  </div>
+<!-- ================= KIDS EMOJI GAME ================= -->
+<section class="kids-section" id="kidsSection" style="display:none;">
+
+    <h2>🎯 Catch The Emoji Game 🎯</h2>
+
+    <div class="kids-info">
+        <div>Score: <span id="kidsScore">0</span></div>
+        <div>Time: <span id="kidsTime">20</span>s</div>
+    </div>
+
+    <div class="game-area" id="gameArea"></div>
+
+    <button id="startKidsGameBtn" class="primary-btn">Start Kids Game 🚀</button>
+
 </section>
+
+<!-- ================= RESULT ================= -->
+<section class="result-section" id="resultSection" style="display:none;">
+    <h2>🎉 Game Finished 🎉</h2>
+    <p id="finalResult"></p>
+    <button id="restartBtn" class="primary-btn">Play Again 🔄</button>
+    <button id="backHomeBtn" class="secondary-btn">Back To Home 🏠</button>
+</section>
+
+<!-- ================= LEADERBOARD ================= -->
+<section class="leaderboard-section">
+    <h2>🏆 Leaderboard</h2>
+    <ul id="leaderboardList">
+        <li>No scores yet</li>
+    </ul>
+</section>
+
+</main>
 
 <!-- ================= FOOTER ================= -->
-<footer class="text-center py-3">
-  <p>© 2026 Aditya Pratap Singh | All Rights Reserved</p>
-</footer>
+<footer class="footer">
 
-<!-- ================= FLOATING SOCIAL ICONS ================= -->
-<div class="floating-socials">
-    <a href="https://www.instagram.com/" target="_blank" class="social-icon">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/aditya-singh-47b218321?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-icon">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-    <a href="https://github.com/Adityahub404singh" target="_blank" class="social-icon">
-        <i class="fab fa-github"></i>
-    </a>
-    <a href="resume.pdf" download class="social-icon resume-btn">
-        <i class="fas fa-file-download"></i> Resume
-    </a>
+<div class="footer-container">
+
+<div>
+<h3>About Developer</h3>
+<p>Ultimate Fun Game Zone is developed by Aditya.</p>
+<p>Fun + Learning + Creativity 🚀</p>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<div>
+<h3>Contact Me</h3>
+<p><i class="fas fa-phone"></i> 7068003894</p>
+<p><i class="fas fa-envelope"></i> singhaditya4560@gmail.com</p>
+</div>
+
+<div>
+<h3>Connect With Me</h3>
+
+<p>
+<a href="https://instagram.com/adi.tyacreates" target="_blank" class="social-link">
+<i class="fab fa-instagram"></i> adi.tyacreates
+</a>
+</p>
+
+<p>
+<a href="https://github.com/Adityahub404singh" target="_blank" class="social-link">
+<i class="fab fa-github"></i> Adityahub404singh
+</a>
+</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Ultimate Fun Game Zone | Made with ❤️ by Aditya</p>
+</div>
+
+</footer>
+<!-- ================= AUDIO ================= -->
+<audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-modern-technology-select-3124.mp3"></audio>
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-game-level-completed-2059.mp3"></audio>
+<audio id="wrongSound" src="https://assets.mixkit.co/sfx/preview/mixkit-player-losing-or-failing-2042.mp3"></audio>
+<audio id="bgMusic" src="https://assets.mixkit.co/music/preview/mixkit-game-level-music-689.mp3" loop></audio>
+
 <script src="script.js"></script>
+
 </body>
 </html>
